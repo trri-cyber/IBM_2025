@@ -1,11 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="assets\css\style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SignVibe - Convert</title>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<div class="card">
-  <h2>Real-Time Converter</h2>
-  <input type="text" id="input-text" placeholder="Type: Hello or வணக்கம்" oninput="convertToSign()">
-  <select id="sign-select" onchange="convertFromSign()"></select>
-  <div id="output"></div>
+<body>
+
+<div class="container">
+  <h1>SignVibe - Real-Time Converter</h1>
+  <div class="card">
+    <input type="text" id="input-text" placeholder="Type English or Tamil..." oninput="convertToSign()">
+    
+    <div id="camera-mock" onclick="simulateSignDetection()">
+      <i>Click to simulate sign input</i>
+    </div>
+    
+    <select id="sign-select" onchange="convertFromSign()">
+      <option value="">Or select a sign...</option>
+    </select>
+    
+    <div id="output">Converted output will appear here.</div>
+  </div>
 </div>
-<script src="assets/js/data.js"></script>
-<script src="assets/js/convert.js"></script>
+
+<script>
+// Dataset
+const dictionary = {
+  hello: { en: 'Hello', ta: 'வணக்கம்', category: 'greetings', video: 'https://www.youtube.com/embed/hello' },
+  goodbye: { en: 'Goodbye', ta: 'பிரியாவிடை', category: 'greetings', video: 'https://www.youtube.com/embed/goodbye' },
+  water: { en: 'Water', ta: 'தண்ணீர்', category: 'food', video: 'https://www.youtube.com/embed/water' },
+  food: { en: 'Food', ta: 'உணவு', category: 'food', video: 'https://www.youtube.com/embed/food' },
+  doctor: { en: 'Doctor', ta: 'மருத்துவர்', category: 'health', video: 'https://www.youtube.com/embed/doctor' },
+  bus: { en: 'Bus', ta: 'பேருந்து', category: 'travel', video: 'https://www.youtube.com/embed/bus' }
+};
+
+// Populate dropdown
+const signSelect = document.getElementById('sign-select');
+Object.entries(dictionary).forEach(([key, val]) => {
+  const opt = document.createElement('option');
+  opt.value = key;
+  opt.textContent = `${val.en} / ${val.ta}`;
+  signSelect.appendChild(opt);
+});
+
+// Convert input text to sign
+function convertToSign() {
+  const input = document.getElementById('input-text').value.trim().toLowerCase();
+  const output = document.getElementById('output');
+  const match = Object.values(dictionary).find(d => d.en.toLowerCase() === input || d.ta === input);
+  if(match) {
+    output.innerHTML = `<p>${match.en} / ${match.ta}</p>
+                        <iframe width="300" height="200" src="${match.video}" frameborder="0" allowfullscreen></iframe>`;
+  } else {
+    output.textContent = 'No match found.';
+  }
+}
+
+// Convert from dropdown
+function convertFromSign() {
+  const key = signSelect.value;
+  const output = document.getElementById('output');
+  if(dictionary[key]) {
+    const val = dictionary[key];
+    output.innerHTML = `<p>${val.en} / ${val.ta}</p>
+                        <iframe width="300" height="200" src="${val.video}" frameborder="0" allowfullscreen></iframe>`;
+  } else {
+    output.textContent = 'Select a valid sign.';
+  }
+}
+
+// Mock camera click
+function simulateSignDetection() {
+  alert('Simulated sign detection triggered!');
+}
+</script>
+</body>
+</html>

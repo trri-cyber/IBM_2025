@@ -1,24 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="assets\css\style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Language Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<div class="card">
-  <h2>Welcome!</h2>
-  <p>Tap icons to start. Swipe for flashcards.</p>
-  <div class="category-grid">
-    <button class="category-btn" onclick="loadCategory('greetings')">Greetings</button>
-    <button class="category-btn" onclick="loadCategory('food')">Food</button>
-    <button class="category-btn" onclick="loadCategory('health')">Health</button>
-    <button class="category-btn" onclick="loadCategory('travel')">Travel</button>
-    <button class="category-btn" onclick="loadCategory('family')">Family</button>
-    <button class="category-btn" onclick="loadCategory('work')">Work</button>
+
+<body>
+  <div class="card">
+    <h2>Welcome!</h2>
+    <p>Tap icons to start. Swipe for flashcards.</p>
+
+    <div class="category-grid">
+      <button class="category-btn" onclick="loadCategory('greetings')">Greetings</button>
+      <button class="category-btn" onclick="loadCategory('food')">Food</button>
+      <button class="category-btn" onclick="loadCategory('health')">Health</button>
+      <button class="category-btn" onclick="loadCategory('travel')">Travel</button>
+      <button class="category-btn" onclick="loadCategory('family')">Family</button>
+      <button class="category-btn" onclick="loadCategory('work')">Work</button>
+    </div>
+
+    <div id="home-output"></div>
   </div>
-  <div id="home-output"></div>
-</div>
-<script src="assets/js/data.js"></script>
-<script>
-function loadCategory(cat) {
-  const filtered = Object.entries(dictionary).filter(([_, d]) => d.category === cat);
-  const output = document.getElementById('home-output');
-  output.innerHTML = `<h3>${cat}</h3><p>${filtered.length} signs available.</p>`;
-}
-</script>
+
+  <script>
+    const dictionary = {
+      // GREETINGS
+      hello: { en: 'Hello', ta: 'வணக்கம்', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      goodbye: { en: 'Goodbye', ta: 'பிரியாவிடை', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      thankyou: { en: 'Thank you', ta: 'நன்றி', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      please: { en: 'Please', ta: 'தயவு செய்து', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      sorry: { en: 'Sorry', ta: 'மன்னிக்கவும்', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+
+      // FOOD
+      apple: { en: 'Apple', ta: 'ஆப்பிள்', category: 'food', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      rice: { en: 'Rice', ta: 'அரிசி', category: 'food', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      water: { en: 'Water', ta: 'தண்ணீர்', category: 'food', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      bread: { en: 'Bread', ta: 'ரொட்டி', category: 'food', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      milk: { en: 'Milk', ta: 'பால்', category: 'food', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+
+      // HEALTH
+      doctor: { en: 'Doctor', ta: 'மருத்துவர்', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      pain: { en: 'Pain', ta: 'வலி', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      medicine: { en: 'Medicine', ta: 'மருந்து', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      hospital: { en: 'Hospital', ta: 'மருத்துவமனை', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      healthy: { en: 'Healthy', ta: 'ஆரோக்கியமான', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+
+      // TRAVEL
+      car: { en: 'Car', ta: 'கார்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      bus: { en: 'Bus', ta: 'பஸ்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      train: { en: 'Train', ta: 'ரயில்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      airport: { en: 'Airport', ta: 'விமான நிலையம்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      ticket: { en: 'Ticket', ta: 'சீட்டு', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+
+      // FAMILY
+      father: { en: 'Father', ta: 'தந்தை', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      mother: { en: 'Mother', ta: 'தாய்', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      brother: { en: 'Brother', ta: 'சகோதரன்', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      sister: { en: 'Sister', ta: 'சகோதரி', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      family: { en: 'Family', ta: 'குடும்பம்', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+
+      // WORK
+      office: { en: 'Office', ta: 'அலுவலகம்', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      meeting: { en: 'Meeting', ta: 'சந்திப்பு', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      computer: { en: 'Computer', ta: 'கணினி', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      project: { en: 'Project', ta: 'திட்டம்', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      work: { en: 'Work', ta: 'வேலை', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+   };
+
+    function loadCategory(cat) {
+      const filtered = Object.entries(dictionary).filter(([_, d]) => d.category === cat);
+      const output = document.getElementById('home-output');
+
+      if (filtered.length === 0) {
+        output.innerHTML = `<p>No signs available for "${cat}".</p>`;
+        return;
+      }
+
+      let html = `<h3>${cat.charAt(0).toUpperCase() + cat.slice(1)}</h3>`;
+      html += `<p>${filtered.length} signs available:</p>`;
+      html += `<div class="sign-list">`;
+
+      filtered.forEach(([key, d]) => {
+        html += `
+          <div class="sign-item">
+            <p><b>${d.en}</b> — ${d.ta}</p>
+            ${d.video ? `<iframe src="${d.video}" frameborder="0" allowfullscreen></iframe>` : ''}
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      output.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

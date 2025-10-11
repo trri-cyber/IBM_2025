@@ -1,10 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="assets\css\style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SignVibe - Emergency SOS</title>
+<link rel="stylesheet" href="assets\css\style.css">
 </head>
-<div class="card">
-  <h2>Emergency SOS</h2>
-  <p>Detected signs will auto alert contacts.</p>
-  <button class="danger" onclick="triggerSOS()">Send Help!</button>
-  <div id="sos-output"></div>
+<body>
+
+<div class="container">
+  <h1>SignVibe - Emergency SOS</h1>
+
+  <div class="card">
+    <p>Signs related to emergencies:</p>
+    
+    <div id="emergency-signs" class="category-grid"></div>
+    
+    <button class="danger" onclick="triggerSOS()">Send Help! (Mock)</button>
+    
+    <div id="sos-output"></div>
+  </div>
 </div>
-<script src="assets/js/emergency.js"></script>
+
+<script>
+// Emergency signs with YouTube URLs
+const emergencySigns = [
+  { en: 'Help', ta: 'உதவி', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+  { en: 'Fire', ta: 'தீ', video: 'https://www.youtube.com/embed/VIDEO_ID_2' },
+  { en: 'Accident', ta: 'தடுக்கம்', video: 'https://www.youtube.com/embed/VIDEO_ID_3' },
+  { en: 'Doctor', ta: 'மருத்துவர்', video: 'https://www.youtube.com/embed/VIDEO_ID_4' }
+];
+
+// Display emergency signs
+const signsContainer = document.getElementById('emergency-signs');
+emergencySigns.forEach(sign => {
+  const div = document.createElement('div');
+  div.classList.add('sign-item');
+  div.innerHTML = `
+    <p><b>${sign.en}</b> — ${sign.ta}</p>
+    <div class="video-container">
+      <iframe width="200" height="150" src="${sign.video}" frameborder="0" allowfullscreen></iframe>
+    </div>
+  `;
+  signsContainer.appendChild(div);
+});
+
+// Mock contacts
+const contacts = [
+  { name: 'Police', number: '911' },
+
+];
+
+// Mock SOS trigger
+function triggerSOS() {
+  const output = document.getElementById('sos-output');
+  output.innerHTML = '';
+  
+  contacts.forEach(contact => {
+    const msg = `Alert sent to ${contact.name} (${contact.number})!`;
+    const p = document.createElement('p');
+    p.textContent = msg;
+    output.appendChild(p);
+  });
+
+  alert('Emergency alerts triggered (mock)! contact us : 1098');
+}
+</script>
+
+</body>
+</html>

@@ -1,20 +1,101 @@
 <head>
-    <link rel="stylesheet" href="assets\css\style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <div class="card">
   <h2>Learn ISL</h2>
   <div id="progress">Progress: 0%</div>
   <div id="flashcard" class="flashcard">
-    <div id="front">Tap Next to start</div>
-    <div id="back" class="hidden"></div>
+    <div id="front">Click Next to start the quiz</div>
+    <iframe id="sign-video" class="hidden" width="300" height="200" frameborder="0" allowfullscreen></iframe>
   </div>
   <button onclick="nextCard()">Next</button>
-  <button onclick="revealCard()">Reveal</button>
-  <button onclick="startQuiz()">Quiz</button>
+
   <div id="quiz" class="hidden">
-    <p id="quiz-question"></p>
+    <p id="quiz-question">Select the correct word for the sign:</p>
     <div class="quiz-options"></div>
   </div>
 </div>
-<script src="assets/js/data.js"></script>
-<script src="assets/js/learn.js"></script>
+
+<script>
+// Dictionary
+const dictionary = {
+  // Greetings
+  hello: { en: 'Hello', ta: 'வணக்கம்', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+  goodbye: { en: 'Goodbye', ta: 'பிரியாவிடை', category: 'greetings', video: 'https://www.youtube.com/embed/3JZ_D3ELwOQ' },
+  please: { en: 'Please', ta: 'தயவு செய்து', category: 'greetings', video: 'https://www.youtube.com/embed/tgbNymZ7vqY' },
+  // Food
+  water: { en: 'Water', ta: 'தண்ணீர்', category: 'food', video: 'https://www.youtube.com/embed/OQSNhk5ICTI' },
+  food: { en: 'Food', ta: 'உணவு', category: 'food', video: 'https://www.youtube.com/embed/2Vv-BfVoq4g' },
+  // Health
+  doctor: { en: 'Doctor', ta: 'மருத்துவர்', category: 'health', video: 'https://www.youtube.com/embed/fJ9rUzIMcZQ' },
+  medicine: { en: 'Medicine', ta: 'மருந்து', category: 'health', video: 'https://www.youtube.com/embed/eY52Zsg-KVI' },
+  // Travel
+  bus: { en: 'Bus', ta: 'பேருந்து', category: 'travel', video: 'https://www.youtube.com/embed/ScNNfyq3d_w' },
+  go: { en: 'Go', ta: 'போ', category: 'travel', video: 'https://www.youtube.com/embed/hTWKbfoikeg' },
+  // Family
+  mother: { en: 'Mother', ta: 'அம்மா', category: 'family', video: 'https://www.youtube.com/embed/YykjpeuMNEk' },
+  father: { en: 'Father', ta: 'அப்பா', category: 'family', video: 'https://www.youtube.com/embed/kJQP7kiw5Fk' },
+  // Work
+  school: { en: 'School', ta: 'பள்ளி', category: 'work', video: 'https://www.youtube.com/embed/OPf0YbXqDm0' },
+  work: { en: 'Work', ta: 'வேலை', category: 'work', video: 'https://www.youtube.com/embed/uelHwf8o7_U' },
+};
+
+// Convert dictionary to array for quiz
+const cards = Object.entries(dictionary).map(([key, data]) => ({
+  en: data.en,
+  ta: data.ta,
+  video: data.video
+}));
+
+let currentCardIndex = -1;
+let mastered = 0;
+
+function nextCard() {
+  currentCardIndex++;
+  if (currentCardIndex >= cards.length) currentCardIndex = 0;
+
+  const card = cards[currentCardIndex];
+  document.getElementById('front').textContent = 'Select the correct word for the sign';
+
+  const videoEl = document.getElementById('sign-video');
+  videoEl.src = card.video;
+  videoEl.classList.remove('hidden');
+
+  document.getElementById('quiz').classList.remove('hidden');
+
+  generateOptions(card);
+  updateProgress();
+}
+
+function generateOptions(card) {
+  const optionsDiv = document.querySelector('.quiz-options');
+  optionsDiv.innerHTML = '';
+
+  // Select 3 random wrong options
+  let wrongOptions = cards.filter(c => c !== card).sort(() => 0.5 - Math.random()).slice(0, 3);
+
+  let allOptions = [...wrongOptions, card].sort(() => Math.random() - 0.5);
+
+  allOptions.forEach(c => {
+    const btn = document.createElement('button');
+    btn.classList.add('quiz-btn');
+    btn.textContent = `${c.en} / ${c.ta}`;
+    btn.onclick = () => {
+      if (c === card) {
+        btn.classList.add('correct');
+        mastered++;
+      } else {
+        btn.classList.add('incorrect');
+      }
+      optionsDiv.querySelectorAll('button').forEach(b => b.disabled = true);
+      updateProgress();
+    };
+    optionsDiv.appendChild(btn);
+  });
+}
+
+function updateProgress() {
+  const progress = Math.floor((mastered / cards.length) * 100);
+  document.getElementById('progress').textContent = `Progress: ${progress}% | Cards Mastered: ${mastered}/${cards.length}`;
+}
+</script>
