@@ -1,0 +1,17 @@
+<div class="card">
+  <h2>Learn ISL</h2>
+  <div id="progress">Progress: 0%</div>
+  <div id="flashcard" class="flashcard">
+    <div id="front">Tap Next to start</div>
+    <div id="back" class="hidden"></div>
+  </div>
+  <button onclick="nextCard()">Next</button>
+  <button onclick="revealCard()">Reveal</button>
+  <button onclick="startQuiz()">Quiz</button>
+  <div id="quiz" class="hidden">
+    <p id="quiz-question"></p>
+    <div class="quiz-options"></div>
+  </div>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/learn.js"></script>
