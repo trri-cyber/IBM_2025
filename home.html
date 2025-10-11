@@ -6,7 +6,6 @@
   <title>Sign Language Home</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
   <div class="card">
     <h2>Welcome!</h2>
@@ -27,11 +26,11 @@
   <script>
     const dictionary = {
       // GREETINGS
-      hello: { en: 'Hello', ta: 'வணக்கம்', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      goodbye: { en: 'Goodbye', ta: 'பிரியாவிடை', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      thankyou: { en: 'Thank you', ta: 'நன்றி', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      please: { en: 'Please', ta: 'தயவு செய்து', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      sorry: { en: 'Sorry', ta: 'மன்னிக்கவும்', category: 'greetings', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      hello: { en: 'Hello', ta: 'வணக்கம்', category: 'greetings', video: 'https://www.youtube.com/embed/d6UJ4l7gHHw' },
+      goodbye: { en: 'Goodbye', ta: 'பிரியாவிடை', category: 'greetings', video: 'https://www.youtube.com/embed/d6UJ4l7gHHw' },
+      thankyou: { en: 'Thank you', ta: 'நன்றி', category: 'greetings', video: 'https://www.youtube.com/embed/__lLQ3mhCvM' },
+      please: { en: 'Please', ta: 'தயவு செய்து', category: 'greetings', video: 'https://www.youtube.com/embed/lBJc2utXf04' },
+      sorry: { en: 'Sorry', ta: 'மன்னிக்கவும்', category: 'greetings', video: 'https://www.youtube.com/embed/AMGGpAKltS0' },
 
       // FOOD
       apple: { en: 'Apple', ta: 'ஆப்பிள்', category: 'food', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
@@ -41,39 +40,39 @@
       milk: { en: 'Milk', ta: 'பால்', category: 'food', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
 
       // HEALTH
-      doctor: { en: 'Doctor', ta: 'மருத்துவர்', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      pain: { en: 'Pain', ta: 'வலி', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      medicine: { en: 'Medicine', ta: 'மருந்து', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      hospital: { en: 'Hospital', ta: 'மருத்துவமனை', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      healthy: { en: 'Healthy', ta: 'ஆரோக்கியமான', category: 'health', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      doctor: { en: 'Doctor', ta: 'மருத்துவர்', category: 'health', video: 'https://www.youtube.com/embed/IEVgcJA3JWk' },
+      pain: { en: 'Pain', ta: 'வலி', category: 'health', video: 'https://www.youtube.com/embed/Ov6q4qFhWbs' },
+      medicine: { en: 'Medicine', ta: 'மருந்து', category: 'health', video: 'https://www.youtube.com/embed/J0pAaNhq6C8' },
+      hospital: { en: 'Hospital', ta: 'மருத்துவமனை', category: 'health', video: 'https://www.youtube.com/embed/syueldx2RHQ' },
+      healthy: { en: 'Healthy', ta: 'ஆரோக்கியமான', category: 'health', video: 'https://www.youtube.com/embed/DAk2uwVR21I' },
 
       // TRAVEL
-      car: { en: 'Car', ta: 'கார்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      bus: { en: 'Bus', ta: 'பஸ்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      train: { en: 'Train', ta: 'ரயில்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      airport: { en: 'Airport', ta: 'விமான நிலையம்', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      ticket: { en: 'Ticket', ta: 'சீட்டு', category: 'travel', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      car: { en: 'Car', ta: 'கார்', category: 'travel', video: 'https://www.youtube.com/embed/HWHVWpYQWMg' },
+      bus: { en: 'Bus', ta: 'பஸ்', category: 'travel', video: 'https://www.youtube.com/embed/u8A5KRYn5as' },
+      train: { en: 'Train', ta: 'ரயில்', category: 'travel', video: 'https://www.youtube.com/embed/bNS3lgNLp84' },
+      airport: { en: 'Airport', ta: 'விமான நிலையம்', category: 'travel', video: 'https://www.youtube.com/embed/afQunrA2-XA' },
+      ticket: { en: 'Ticket', ta: 'சீட்டு', category: 'travel', video: 'https://www.youtube.com/embed/BT8kBAseOd8' },
 
       // FAMILY
-      father: { en: 'Father', ta: 'தந்தை', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      mother: { en: 'Mother', ta: 'தாய்', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      brother: { en: 'Brother', ta: 'சகோதரன்', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      sister: { en: 'Sister', ta: 'சகோதரி', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      family: { en: 'Family', ta: 'குடும்பம்', category: 'family', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+      father: { en: 'Father', ta: 'தந்தை', category: 'family', video: 'https://www.youtube.com/embed/wFpIhlKkTT4' },
+      mother: { en: 'Mother', ta: 'தாய்', category: 'family', video: 'https://www.youtube.com/embed/kkvKkZKqWhI' },
+      brother: { en: 'Brother', ta: 'சகோதரன்', category: 'family', video: 'https://www.youtube.com/embed/pq5Eo63Hu8c' },
+      sister: { en: 'Sister', ta: 'சகோதரி', category: 'family', video: 'https://www.youtube.com/embed/J4r0qk2q9q0' },
+      family: { en: 'Family', ta: 'குடும்பம்', category: 'family', video: 'https://www.youtube.com/embed/XO5r1l1d8tw' },
 
       // WORK
-      office: { en: 'Office', ta: 'அலுவலகம்', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      meeting: { en: 'Meeting', ta: 'சந்திப்பு', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      computer: { en: 'Computer', ta: 'கணினி', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      project: { en: 'Project', ta: 'திட்டம்', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-      work: { en: 'Work', ta: 'வேலை', category: 'work', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
-   };
+      office: { en: 'Office', ta: 'அலுவலகம்', category: 'work', video: 'https://www.youtube.com/embed/Wv4ksR4qkZ8' },
+      meeting: { en: 'Meeting', ta: 'சந்திப்பு', category: 'work', video: 'https://www.youtube.com/embed/L3aCk5NQK6g' },
+      computer: { en: 'Computer', ta: 'கணினி', category: 'work', video: 'https://www.youtube.com/embed/hwE_V0x0A7k' },
+      project: { en: 'Project', ta: 'திட்டம்', category: 'work', video: 'https://www.youtube.com/embed/VZrLxE__4a4' },
+      work: { en: 'Work', ta: 'வேலை', category: 'work', video: 'https://www.youtube.com/embed/7H3kvvZT0-U' }
+    };
 
     function loadCategory(cat) {
       const filtered = Object.entries(dictionary).filter(([_, d]) => d.category === cat);
       const output = document.getElementById('home-output');
 
-      if (filtered.length === 0) {
+      if (!filtered.length) {
         output.innerHTML = `<p>No signs available for "${cat}".</p>`;
         return;
       }
@@ -85,8 +84,7 @@
       filtered.forEach(([key, d]) => {
         html += `
           <div class="sign-item">
-            <p><b>${d.en}</b> — ${d.ta}</p>
-            ${d.video ? `<iframe src="${d.video}" frameborder="0" allowfullscreen></iframe>` : ''}
+            <iframe width="100%" height="200" src="${d.video}" frameborder="0" allowfullscreen></iframe>
           </div>
         `;
       });
